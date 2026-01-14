@@ -302,46 +302,30 @@
   /* =====================================================
      MOBILE RESPONSIVENESS
      ===================================================== */
-  @media (max-width: 900px) {
-    .two-col {
-      grid-template-columns: 1fr;
-    }
-  
-    .hero {
-      padding-left: 30px;
-      height: 70vh;
-    }
-  
-    .hero-text h1 {
-      font-size: 36px;
-    }
-  
-    .hero::after {
-      background-attachment: scroll;
-    }
-  
-    .section {
-      padding: 70px 30px;
-    }
-  }
-/* ===============================
-   MOBILE FIX FOR HERO SECTION
-   =============================== */
+ /* =========================================
+   MOBILE SAFARI HERO FIX (FINAL)
+   ========================================= */
 @media (max-width: 768px) {
 
-  .hero {
-    height: 65vh;              /* prevent oversized hero */
-    padding-left: 25px;
-  }
-
-  /* Disable parallax on mobile */
+  /* REMOVE pseudo background image */
   .hero::after {
-    background-attachment: scroll;
-    background-position: center 30%;
-    background-size: cover;
+    content: none;
   }
 
-  /* Ensure overlay behaves normally */
+  /* Apply image directly to hero */
+  .hero {
+    background-image: url("trial6.jpg"); /* exact filename */
+    background-size: cover;
+    background-position: center 30%;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+
+    height: 65vh;
+    padding-left: 24px;
+    background-color: transparent;
+  }
+
+  /* Keep dark overlay */
   .hero::before {
     background: rgba(0, 0, 0, var(--overlay-opacity));
   }
@@ -354,5 +338,3 @@
     font-size: 16px;
   }
 }
-
-  
