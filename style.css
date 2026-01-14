@@ -1,349 +1,177 @@
-/* =====================================================
-   CUSTOM CONTROLS (YOU CAN TUNE THESE)
-   ===================================================== */
-   :root {
-    --bg-scale: 1.04;          /* Zoom control: 1.00 = zoomed out, 1.08 = zoomed in */
-    --overlay-opacity: 0.5;   /* Darkness: 0.30 = light, 0.60 = dark */
-  }
-  
-  /* =====================================================
-     GLOBAL RESET & BEHAVIOR
-     ===================================================== */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", Arial, sans-serif;
-  }
-  
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  body {
-    background: #ffffff;
-    color: #333;
-  }
-  
-  /* =====================================================
-     NAVIGATION
-     ===================================================== */
-  .nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: #000;
-    color: #fff;
-    padding: 18px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 10;
-  }
-  
-  .nav .logo {
-    font-weight: bold;
-    letter-spacing: 1px;
-  }
-  
-  .nav a {
-    color: #fff;
-    margin-left: 25px;
-    text-decoration: none;
-    font-size: 14px;
-    letter-spacing: 1px;
-  }
-  
-  /* =====================================================
-     HERO SECTION (PARALLAX + DARK OVERLAY)
-     ===================================================== */
-  .hero {
+:root {
+  --overlay: 0.5;
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+html, body {
+  width: 100%;
+}
+
+body {
+  background: #fff;
+  color: #333;
+  padding-top: 70px;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #000;
+  color: #fff;
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 100;
+}
+
+.nav a {
+  color: #fff;
+  margin-left: 25px;
+  text-decoration: none;
+}
+
+/* HERO */
+.hero {
   position: relative;
-  height: calc(80vh - 70px); /* compensate for nav cleanly */
+  height: calc(var(--vh, 1vh) * 100);
   display: flex;
   align-items: center;
   padding-left: 60px;
   overflow: hidden;
 }
 
-  
-  /* Background image layer */
-  .hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: url("trial\ 6.jpg") center 26% /
-      calc(var(--bg-scale) * 95%) no-repeat;
-    background-attachment: fixed;
-    z-index: 0;
-  }
-  
-  /* Dark overlay layer */
-  .hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, var(--overlay-opacity));
-    z-index: 1;
-  }
-  
-  /* Hero text */
-  .hero-text {
-    position: relative;
-    z-index: 2;
-  }
-  
-  .hero-text h1 {
-    color: #fff;
-    font-size: 48px;
-    letter-spacing: 2px;
-  }
-  
-  .hero-text p {
-    color: #ddd;
-    font-size: 18px;
-    margin-top: 10px;
-  }
-  
-  /* =====================================================
-     GENERAL SECTIONS
-     ===================================================== */
-  .section {
-    padding: 90px 70px;
-    position: relative;
-  }
-  
-  .section.light {
-    background: #f5f5f5;
-  }
-  
-  /* subtle divider (Weebly-like) */
-  .section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 60px;
-    height: 3px;
-    background: #111;
-    transform: translateX(-50%);
-  }
-  
-  /* =====================================================
-     TWO-COLUMN LAYOUT
-     ===================================================== */
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    align-items: center;
-  }
-  
-  .quote {
-    background: #eee;
-    padding: 40px;
-    font-size: 22px;
-    font-style: italic;
-    color: #333;
-  }
-  
-  /* =====================================================
-     EDUCATION SECTION
-     ===================================================== */
-  .education {
-    max-width: 1000px;
-    margin: auto;
-  }
-  
-  .edu-item {
-    background: #fff;
-    padding: 30px;
-    margin-top: 30px;
-    border-left: 4px solid #111;
-  }
-  
-  .edu-item h3 {
-    margin-bottom: 5px;
-  }
-  
-  .edu-meta {
-    color: #777;
-    font-size: 14px;
-    margin-top: 5px;
-  }
-  
-  /* =====================================================
-     INTERNSHIPS (MTIS – UVIC FOCUS)
-     ===================================================== */
-  .internships {
-    max-width: 1000px;
-    margin: auto;
-  }
-  
-  .section-intro {
-    max-width: 800px;
-    margin-bottom: 40px;
-    color: #555;
-    font-size: 16px;
-  }
-  
-  .internship {
-    background: #fff;
-    padding: 30px;
-    margin-top: 30px;
-    border-left: 4px solid #0077cc; /* academic accent */
-  }
-  
-  .internship h3 {
-    margin-bottom: 6px;
-  }
-  
-  .intern-meta {
-    display: block;
-    font-size: 14px;
-    color: #777;
-    margin-bottom: 12px;
-  }
-  
-  /* ========= INTERNSHIP TITLE LINKS ========= */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("trial 6.jpg") center / cover no-repeat;
+  z-index: 0;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,var(--overlay));
+  z-index: 1;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-text h1 {
+  color: #fff;
+  font-size: 48px;
+}
+
+.hero-text p {
+  color: #ddd;
+  margin-top: 10px;
+}
+
+/* SECTIONS */
+.section {
+  padding: 90px 70px;
+}
+
+.section.light {
+  background: #f5f5f5;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.quote {
+  background: #eee;
+  padding: 40px;
+  font-style: italic;
+}
+
+/* EDUCATION */
+.edu-item {
+  background: #fff;
+  padding: 30px;
+  margin-top: 20px;
+  border-left: 4px solid #111;
+}
+
+/* INTERNSHIPS */
+.internship {
+  background: #fff;
+  padding: 30px;
+  margin-top: 30px;
+  border-left: 4px solid #0077cc;
+}
+
 .internship a {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  .internship a h3 {
-    cursor: pointer;
-    transition: color 0.2s ease, transform 0.2s ease;
-  }
-  
-  .internship a:hover h3 {
-    color: #0077cc;
-    transform: translateX(3px);
-  }
-  
-  /* =====================================================
-     PROJECTS SECTION
-     ===================================================== */
-  .projects {
-    background: #111;
-    color: #fff;
-  }
-  
-  .project {
-    background: #fff;
-    color: #000;
-    padding: 30px;
-    margin-top: 30px;
-  }
-  
-  /* project title links */
-  .project a {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  .project a h3 {
-    cursor: pointer;
-    transition: color 0.2s ease, transform 0.2s ease;
-  }
-  
-  .project a:hover h3 {
-    color: #0077cc;
-    transform: translateX(3px);
-  }
-  
-  /* =====================================================
-     CONTACT SECTION
-     ===================================================== */
-  .contact {
-    text-align: center;
-  }
-  
-  .btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 14px 35px;
-    background: #111;
-    color: #fff;
-    text-decoration: none;
-    letter-spacing: 1px;
-  }
-  
-  /* =====================================================
-     POP EFFECT WHEN CLICKING NAV TABS
-     ===================================================== */
-  #projects:target,
-  #contact:target {
-    animation: pop 0.6s ease;
-    box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.08);
-  }
-  
-  @keyframes pop {
-    0% {
-      transform: scale(0.97);
-      opacity: 0.7;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-  
-  /* =====================================================
-     FOOTER
-     ===================================================== */
-  footer {
-    background: #111;
-    color: #fff;
-    text-align: center;
-    padding: 25px;
-  }
-  
-  /* =====================================================
-     MOBILE RESPONSIVENESS
-     ===================================================== */
-/* =========================================
-   MOBILE SAFARI HERO – CLEAN FIX
-   ========================================= */
+  color: inherit;
+  text-decoration: none;
+}
+
+/* PROJECTS */
+.projects {
+  background: #111;
+  color: #fff;
+}
+
+.project {
+  background: #fff;
+  color: #000;
+  padding: 30px;
+  margin-top: 30px;
+}
+
+/* CONTACT */
+.contact {
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 35px;
+  margin-top: 20px;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* FOOTER */
+footer {
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 25px;
+}
+
+/* MOBILE */
 @media (max-width: 768px) {
-
-  html, body {
-    margin: 0;
-    padding: 0;
-  }
-
-  /* Nav becomes normal flow on mobile */
   .nav {
     position: relative;
   }
-
-  /* Hero becomes true first section */
+  body {
+    padding-top: 0;
+  }
   .hero {
-    height: 65vh;
     padding-left: 24px;
-    background-image: url("trial 6.jpg");
-    background-size: cover;
-    background-position: center 30%;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
   }
-
-  /* Disable pseudo background */
-  .hero::after {
-    content: none;
+  .two-col {
+    grid-template-columns: 1fr;
   }
-
-  /* Overlay stays */
-  .hero::before {
-    background: rgba(0, 0, 0, var(--overlay-opacity));
-  }
-
   .hero-text h1 {
     font-size: 32px;
   }
-
-  .hero-text p {
-    font-size: 16px;
-  }
 }
-
