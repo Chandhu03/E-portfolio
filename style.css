@@ -58,14 +58,14 @@
      HERO SECTION (PARALLAX + DARK OVERLAY)
      ===================================================== */
   .hero {
-    position: relative;
-    height: 80vh;
-    margin-top: 70px; /* offset for fixed nav */
-    display: flex;
-    align-items: center;
-    padding-left: 60px;
-    overflow: hidden;
-  }
+  position: relative;
+  height: calc(80vh - 70px); /* compensate for nav cleanly */
+  display: flex;
+  align-items: center;
+  padding-left: 60px;
+  overflow: hidden;
+}
+
   
   /* Background image layer */
   .hero::after {
@@ -303,30 +303,37 @@
      MOBILE RESPONSIVENESS
      ===================================================== */
 /* =========================================
-   MOBILE SAFARI HERO FIX (FINAL)
+   MOBILE SAFARI HERO – CLEAN FIX
    ========================================= */
 @media (max-width: 768px) {
 
-  /* REMOVE pseudo background image */
-  .hero::after {
-    content: none;
+  html, body {
+    margin: 0;
+    padding: 0;
   }
 
-  /* Apply image directly to hero */
+  /* Nav becomes normal flow on mobile */
+  .nav {
+    position: relative;
+  }
+
+  /* Hero becomes true first section */
   .hero {
-    background-image: url("trial6.jpg");
+    height: 65vh;
+    padding-left: 24px;
+    background-image: url("trial 6.jpg");
     background-size: cover;
     background-position: center 30%;
     background-repeat: no-repeat;
     background-attachment: scroll;
-
-    height: 65vh;
-    padding-left: 24px;
-    background-color: transparent;
-    margin-top: 0 !important;
   }
 
-  /* Keep dark overlay */
+  /* Disable pseudo background */
+  .hero::after {
+    content: none;
+  }
+
+  /* Overlay stays */
   .hero::before {
     background: rgba(0, 0, 0, var(--overlay-opacity));
   }
@@ -338,13 +345,5 @@
   .hero-text p {
     font-size: 16px;
   }
-
-  body {
-    margin: 0;
-    padding-top: 0;
-  }
-
-  header {
-    position: relative;
-  }
 }
+
