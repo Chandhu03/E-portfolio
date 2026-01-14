@@ -74,7 +74,7 @@ body {
   inset: 0;
   background-image: url("trial 6.jpg");
   background-size: cover;
-  background-position: center 23%;
+  background-position: center 24%;
   background-repeat: no-repeat;
   transform: scale(var(--image-zoom));
   transform-origin: center;
@@ -273,5 +273,6 @@ footer {
     --image-zoom: 1.00;
   }
 }
+
 
 
