@@ -338,3 +338,22 @@
     font-size: 16px;
   }
 }
+/* =========================================
+   MOBILE HERO TOP SPACING FIX
+   ========================================= */
+@media (max-width: 768px) {
+
+  .hero {
+    margin-top: 0 !important;
+  }
+
+  body {
+    margin: 0;
+    padding-top: 0;
+  }
+
+  header {
+    position: relative;
+  }
+}
+
